@@ -34,7 +34,7 @@ AZURE_OPENAI_MODEL = os.environ.get("AZURE_OPENAI_MODEL")
 AZURE_OPENAI_KEY = os.environ.get("AZURE_OPENAI_KEY")
 AZURE_OPENAI_TEMPERATURE = os.environ.get("AZURE_OPENAI_TEMPERATURE", 0)
 AZURE_OPENAI_TOP_P = os.environ.get("AZURE_OPENAI_TOP_P", 1.0)
-AZURE_OPENAI_MAX_TOKENS = os.environ.get("AZURE_OPENAI_MAX_TOKENS", 8000)
+# AZURE_OPENAI_MAX_TOKENS = os.environ.get("AZURE_OPENAI_MAX_TOKENS", 8000)
 AZURE_OPENAI_STOP_SEQUENCE = os.environ.get("AZURE_OPENAI_STOP_SEQUENCE")
 AZURE_OPENAI_SYSTEM_MESSAGE = os.environ.get("AZURE_OPENAI_SYSTEM_MESSAGE", "You are an AI assistant that helps people find information.")
 AZURE_OPENAI_PREVIEW_API_VERSION = os.environ.get("AZURE_OPENAI_PREVIEW_API_VERSION", "2023-06-01-preview")
@@ -59,7 +59,7 @@ def prepare_body_headers_with_data(request):
     body = {
         "messages": request_messages,
         "temperature": float(AZURE_OPENAI_TEMPERATURE),
-        "max_tokens": int(AZURE_OPENAI_MAX_TOKENS),
+     #   "max_tokens": int(AZURE_OPENAI_MAX_TOKENS),
         "top_p": float(AZURE_OPENAI_TOP_P),
         "stop": AZURE_OPENAI_STOP_SEQUENCE.split("|") if AZURE_OPENAI_STOP_SEQUENCE else None,
         "stream": SHOULD_STREAM,
@@ -206,7 +206,7 @@ def conversation_without_data(request):
         engine=AZURE_OPENAI_MODEL,
         messages = messages,
         temperature=float(AZURE_OPENAI_TEMPERATURE),
-        max_tokens=int(AZURE_OPENAI_MAX_TOKENS),
+       # max_tokens=int(AZURE_OPENAI_MAX_TOKENS),
         top_p=float(AZURE_OPENAI_TOP_P),
         stop=AZURE_OPENAI_STOP_SEQUENCE.split("|") if AZURE_OPENAI_STOP_SEQUENCE else None,
         stream=SHOULD_STREAM
